@@ -1,0 +1,11 @@
+<% if post.likes.size > 0 %>
+  <% post.likes.each do |like| %>
+    <% if like.user_id == current_user.id %>
+      <%= link_to 'Unlike', post_likes_path(post), method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to 'Like', post_likes_path(post), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to 'Like', post_likes_path(post), method: :post, class: 'btn btn-primary' %>
+<% end %>

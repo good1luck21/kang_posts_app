@@ -1,0 +1,13 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+<%= form_for @post, url: posts_path, method: :post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_path(post) %> | いいね数: <%= post.likes.size %> | <%= render 'likes/like', post: post %><br>
+<% end %>
